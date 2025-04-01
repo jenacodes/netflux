@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 
 const MovieCard = ({
-  movie: { title, vote_average, poster_path, release_date, original_language },
+  movie: {
+    title,
+    vote_average,
+    poster_path,
+    release_date,
+    original_language,
+    overview,
+  },
 }) => {
   return (
     <div className="bg-dark-100 rounded-2xl shadow-inner shadow-light-100/10 p-5">
@@ -17,7 +24,7 @@ const MovieCard = ({
       <div className="mt-4">
         <h3 className="text-white font-bold text-base line-clamp-1">{title}</h3>
 
-        <div className="mt-2 flex flex-row items-center flex-wrap gap-2">
+        <div className="mt-2 flex flex-col items-start flex-wrap gap-2">
           <div className="flex flex-row items-center gap-1">
             <img src="./star.svg" alt="Star icon" />
             <p className="text-white font-bold">
@@ -32,6 +39,7 @@ const MovieCard = ({
               {release_date ? release_date.split("-")[0] : "N/A"}
             </p>
           </div>
+          <span className="text-gray-100 text-base">{overview}</span>
         </div>
       </div>
     </div>
@@ -46,6 +54,7 @@ MovieCard.propTypes = {
     release_date: PropTypes.string,
     original_language: PropTypes.string,
     vote_average: PropTypes.number,
+    overview: PropTypes.string,
   }).isRequired,
 };
 
